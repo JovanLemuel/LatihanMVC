@@ -23,7 +23,16 @@ if (isset($_GET['delete'])) {
 </head>
 
 <body>
-    <h1 class="text-center">View Office</h1>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <div class="navbar-nav">
+                <a class="nav-link" href="view.php">Main</a>
+                <a class="nav-link" href="viewkaryawan.php">Karyawan</a>
+                <a class="nav-link" href="viewoffice.php">Office</a>
+            </div>
+        </div>
+    </nav>
+    <h1 class="text-center mt-5">View Office</h1>
     <div class="container-fluid">
         <table class="table table-mark mt-2 w-50 mx-auto table-bordered table-striped">
             <thead>
@@ -77,8 +86,6 @@ if (isset($_GET['delete'])) {
         </div>
         <button name="submit" type="submit" class="btn d-block mx-auto mt-2 btn-primary">Submit</button>
     </form>
-    <a href="viewKaryawan.php"><button class='btn d-block mx-auto mt-2 btn-primary'>View Karyawan</button></a>
-    <a href="view.php"><button class='btn d-block mx-auto mt-2 btn-primary'>View All</button></a>
 </body>
 
 </html>

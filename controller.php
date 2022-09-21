@@ -1,8 +1,6 @@
 <?php
 
-include_once("model.php");
-include_once("office.php");
-include_once("karyawan.php");
+include_once("allController.php");
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
@@ -12,10 +10,10 @@ if (!isset($_SESSION['listModel'])) {
 
 function insert()
 {
-    $model = new model();
-    $model->nama = $_POST['nama'];
-    $model->officeName = $_POST['officeName'];
-    array_push($_SESSION['listModel'], $model);
+    $modelData = new model();
+    $modelData->karyawanData = $_POST['karyawanData'];
+    $modelData->officeData = $_POST['officeData'];
+    array_push($_SESSION['listModel'], $modelData);
 }
 
 function index()

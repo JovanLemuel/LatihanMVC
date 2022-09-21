@@ -1,6 +1,6 @@
 <?php
 
-include_once("karyawan.php");
+include_once("allController.php");
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }

@@ -2,6 +2,6 @@
 
 class model
 {
-    public $officeName;
-    public $nama;
+    public $officeData;
+    public $karyawanData;
 }

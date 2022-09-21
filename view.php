@@ -22,27 +22,35 @@ if (isset($_GET['delete'])) {
 </head>
 
 <body>
-    <h1 class="text-center">Employee Office</h1>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <div class="navbar-nav">
+                <a class="nav-link" href="view.php">Main</a>
+                <a class="nav-link" href="viewkaryawan.php">Karyawan</a>
+                <a class="nav-link" href="viewoffice.php">Office</a>
+            </div>
+        </div>
+    </nav>
+    <h1 class="text-center mt-5">Employee Office</h1>
     <div class="container-fluid">
         <table class="table table-mark mt-2 w-50 mx-auto table-bordered table-striped">
             <thead>
                 <tr>
-                    <th scope="col">Nama</th>
+                    <th scope="col">Karyawan</th>
                     <th scope="col">Office</th>
                     <th scope="col">Delete</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                var_dump(index());
                 foreach (index() as $index => $model) {
                     echo "
-                <tr>
-                    <td>" . $model->nama . "</td>
-                    <td>" . $model->officeName . "</td>
-                    <td><a href='view.php?delete=" . $index . "'><button class='btn btn-primary'>Delete</button></a></td>
-                </tr>
-                ";
+                    <tr>
+                        <td>" . $model->karyawanData . "</td>
+                        <td>" . $model->officeData . "</td>
+                        <td><a href='view.php?delete=" . $index . "'><button class='btn btn-primary'>Delete</button></a></td>
+                    </tr>
+                    ";
                 }
 
                 ?>
@@ -53,39 +61,33 @@ if (isset($_GET['delete'])) {
     <form method="POST" action="view.php">
         <div class="text-center">
             <div class="form-group text-start w-50 d-inline-block">
-                <label for="exampleFormControlSelect1">Pilih Nama Karyawan</label>
-                <select name="nama" type="text" class="form-control">
+                <label for="karyawanData">Pilih Karyawan</label>
+                <select name="karyawanData" class="form-select">
                     <?php
-                    foreach (dataKaryawan() as $index => $karyawan) {
-                        echo "<option value=nama>";
-                        echo $karyawan->nama;
+                    foreach (dataKaryawan() as $storeKaryawan) {
+                        echo "<option value='$storeKaryawan->nama'>";
+                        echo $storeKaryawan->nama;
+                        echo "</option>";
+                    }
+                    ?>
+                </select>
+            </div>
+            <div class="form-group text-start w-50 d-inline-block">
+                <label for="officeData">Pilih Office</label>
+                <select name="officeData" class="form-select">
+                    <?php
+                    foreach (dataOffice() as $storeOffice) {
+                        echo "<option value='$storeOffice->officeName'>";
+                        echo $storeOffice->officeName;
                         echo "</option>";
                     }
 
-                    <?php foreach (indexKaryawan() as $indexka => $karyawan): ?>
-                        <option value="<?= $index ?>"><?= $karyawan->nama ?></option>
-                    <?php endforeach; ?>
-
                     ?>
                 </select>
-                <div class="form-group text-start w-50 d-inline-block">
-                    <label for="exampleFormControlSelect2">Pilih Office</label>
-                    <select name="officeName" class="form-control">
-                        <?php
-                        foreach (dataOffice() as $index => $office) {
-                            echo "<option value=officeName>";
-                            echo $office->officeName;
-                            echo "</option>";
-                        }
-                        ?>
-                    </select>
-                </div>
             </div>
         </div>
-        <button name=" submit" type="submit" class="btn d-block mx-auto mt-2 btn-primary">Save</button>
+        <button name="submit" type="submit" class="btn d-block mx-auto mt-2 btn-primary">Save</button>
     </form>
-    <a href="viewKaryawan.php"><button class='btn d-block mx-auto mt-2 btn-primary'>View Karyawan</button></a>
-    <a href="viewOffice.php"><button class='btn d-block mx-auto mt-2 btn-primary'>View Office</button></a>
 </body>
 
 </html>
