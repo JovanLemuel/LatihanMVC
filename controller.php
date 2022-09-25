@@ -35,3 +35,9 @@ function dataOffice()
 {
     return $_SESSION['listOffice'];
 }
+
+function edit($id)
+{
+    $_SESSION['listModel'][$id]->setKaryawanData($_POST['karyawanData']);
+    $_SESSION['listModel'][$id]->setOfficeData($_POST['officeData']);
+}

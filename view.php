@@ -8,6 +8,10 @@ if (isset($_GET['delete'])) {
     delete($_GET['delete']);
 }
 
+if (isset($_POST['edit'])) {
+    edit($_POST['edit']);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -38,6 +42,7 @@ if (isset($_GET['delete'])) {
                 <tr>
                     <th scope="col">Karyawan</th>
                     <th scope="col">Office</th>
+                    <th scope="col">Edit</th>
                     <th scope="col">Delete</th>
                 </tr>
             </thead>
@@ -48,6 +53,7 @@ if (isset($_GET['delete'])) {
                     <tr>
                         <td>" . $model->karyawanData . "</td>
                         <td>" . $model->officeData . "</td>
+                        <td><a href='view.php?edit=" . $index . "'><button class='btn btn-primary'>Edit</button></a></td>
                         <td><a href='view.php?delete=" . $index . "'><button class='btn btn-primary'>Delete</button></a></td>
                     </tr>
                     ";
@@ -57,7 +63,7 @@ if (isset($_GET['delete'])) {
             </tbody>
         </table>
     </div>
-    <h1 class="text-center mt-2">Set Details</h1>
+    <h1 class="text-center mt-2"><?php echo isset($_GET['edit']) ? ' Edit' : 'Set' ?> Details</h1>
     <form method="POST" action="view.php">
         <div class="text-center">
             <div class="form-group text-start w-50 d-inline-block">
@@ -86,7 +92,7 @@ if (isset($_GET['delete'])) {
                 </select>
             </div>
         </div>
-        <button name="submit" type="submit" class="btn d-block mx-auto mt-2 btn-primary">Save</button>
+        <button name="<?php echo isset($_GET['edit']) ? 'edit' : 'submit' ?>" value="<?php echo isset($_GET['edit']) ? $_GET['edit'] : '' ?>" type="submit" class="btn d-block mx-auto mt-2 btn-primary">Save</button>
     </form>
 </body>
 

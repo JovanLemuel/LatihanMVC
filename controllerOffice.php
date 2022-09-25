@@ -27,3 +27,11 @@ function deleteOffice($id)
 {
     unset($_SESSION['listOffice'][$id]);
 }
+
+function editOffice($id)
+{
+    $_SESSION['listOffice'][$id]->setOfficeName($_POST['officeName']);
+    $_SESSION['listOffice'][$id]->setAddress($_POST['address']);
+    $_SESSION['listOffice'][$id]->setCity($_POST['city']);
+    $_SESSION['listOffice'][$id]->setPhone($_POST['phone']);
+}

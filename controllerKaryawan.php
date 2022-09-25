@@ -26,3 +26,10 @@ function deleteKaryawan($id)
 {
     unset($_SESSION['listKaryawan'][$id]);
 }
+
+function editKaryawan($id)
+{
+    $_SESSION['listKaryawan'][$id]->setNama($_POST['nama']);
+    $_SESSION['listKaryawan'][$id]->setJabatan($_POST['jabatan']);
+    $_SESSION['listKaryawan'][$id]->setUsia($_POST['usia']);
+}
